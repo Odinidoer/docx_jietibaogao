@@ -13,7 +13,7 @@ from docx import Document
 parser = argparse.ArgumentParser(
     description="iTRAQ prok report automatically generate scripts")
 parser.add_argument(
-    "--org", dest="org", type=str, required=True, help="'ork' or 'prok'")
+    "--org", dest="org", type=str, required=True, help="'euk' or 'prok'")
 parser.add_argument(
     "-m",
     "--test_department_m1",
@@ -327,19 +327,25 @@ def __MJ_jpg(i, docx, mark, file):
                 os.system('''convert %s -crop 6000x3200+0+800 %s''' %
                           (file_jpg, file_jpg))
             elif u'kegg_classification.pdf：对蛋白做KO注释后，可根据它们参与的KEGG代谢通路进行分类' in mark:
-                os.system('''convert %s -crop 2550x2300+0+600 %s''' %
+                os.system('''convert %s -crop 2550x2300+0+800 %s''' %
+                          (file_jpg, file_jpg))
+                os.system('''convert %s -crop 2550x1800+0+0 %s''' %
+                          (file_jpg, file_jpg))
+            elif u'*.Venn.pdf：差异蛋白Venn图' in mark:
+                os.system('''convert %s -crop 2100x2100+450+450 %s''' %
                           (file_jpg, file_jpg))
             elif u'Heatmap_trendlines_for_' in mark:
                 file_jpg = 'tmp/Heatmap_trendlines_for_10_subclusters.pdf-0.jpg'
+            elif u'Heatmap.pdf：差异蛋白表达模式聚类图' in mark:
+                os.system('''convert %s -crop 3600x2400+0+0 %s''' %
+                          (file_jpg, file_jpg))            
             docx.paragraphs[i + 1].add_run()
             docx.paragraphs[i + 1].runs[1].style.style_id = docx.paragraphs[
                 i + 1].runs[0].style.style_id
-            if u'Heatmap.pdf：差异蛋白表达模式聚类图' in mark:
-                docx.paragraphs[i + 1].runs[1].add_picture(
-                    file_jpg, height=8000000)
-            else:
-                docx.paragraphs[i + 1].runs[1].add_picture(
-                    file_jpg, width=6000000)
+            if u'富集分析' in mark:
+                docx.paragraphs[i + 1].runs[1].add_picture(file_jpg, width=6000000)  
+            else:	
+                docx.paragraphs[i + 1].runs[1].add_picture(file_jpg, width=4000000)
             docx.paragraphs[i + 1].runs[0].clear()
     except:
         pass

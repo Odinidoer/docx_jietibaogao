@@ -79,7 +79,7 @@ supporter = re.findall(u'技术支持\t(.*?)\t电话\t(.*?)\t技术支持\t(.*?)
                        project_info)[0]
 
 
-###项目信息等级，好像只能一个一个得写入了
+###项目信息等级，好像只能一个一个写入
 def _project_info(docx):
     for i in range(len(docx.tables)):
         if u'项目名称' in docx.tables[i].rows[0].cells[0].text:
@@ -235,76 +235,76 @@ def _MJ_tables(docx):
         #4.1.1
         ##GO.list
         __MJ_table(i, docx, u'蛋白Accession号', u'对应的GO编号',
-                   '%s/2.Annotation/2.1.GO/GO.list' %
+                   '%s/*Annotation/*GO/GO.list' %
                    (args.file), r'GO:', 5, table_format)
         ##*level2/3/4.xls
         __MJ_table(i, docx, u'GO注释分类的分支', u'GO分类的定义',
-                   '%s/2.Annotation/2.1.GO/GO.list.level2.xls' %
+                   '%s/*Annotation/*GO/GO.list.level2.xls' %
                    (args.file), r'GO:', 10, table_format)
         #4.1.2
         ##pathway.txt
         __MJ_table(i, docx, u'蛋白的Accession编号', u'对应的KO号',
-                   '%s/2.Annotation/2.2.KEGG/pathway.txt' %
+                   '%s/*Annotation/*KEGG/pathway.txt' %
                    (args.file), r'K', 10, table_format)
         ##pathway_table.xls
         __MJ_table(i, docx, u'通路的编号', u'通路的定义',
-                   '%s/2.Annotation/2.2.KEGG/pathways/pathway_table.xls' %
+                   '%s/*Annotation/*KEGG/pathways/pathway_table.xls' %
                    (args.file), r'K', 5, table_format)
         ##kegg_table.xls
         __MJ_table(i, docx, u'蛋白名称', u'KO编号',
-                   '%s/2.Annotation/2.2.KEGG/pathways/kegg_table.xls' %
+                   '%s/*Annotation/*KEGG/pathways/kegg_table.xls' %
                    (args.file), r'ko', 5, table_format)
         #4.1.3-----COG
         ##COG.list
         __MJ_table(i, docx, u'蛋白Accession号', u'对应的COG号',
-                   '%s/2.Annotation/2.3.COG/COG.list' %
+                   '%s/*Annotation/*COG/COG.list' %
                    (args.file), r'COG', 5, table_format)
         ##COG.annot.xls
         __MJ_table(i, docx, u'蛋白名称', u'COG编号',
-                   '%s/2.Annotation/2.3.COG/COG.annot.xls' %
+                   '%s/*Annotation/*COG/COG.annot.xls' %
                    (args.file), r'\[', 10, table_format)
         ##COG.class.catalog.xls
         __MJ_table(i, docx, u'COG 4种类型', u'COG功能分类，共25',
-                   '%s/2.Annotation/2.3.COG/COG.class.catalog.xls' %
+                   '%s/*Annotation/*COG/COG.class.catalog.xls' %
                    (args.file), r'\[', 10, table_format)
         #4.1.3-----KOG
         ##KOG.list
         __MJ_table(i, docx, u'蛋白Accession号', u'对应的KOG号',
-                   '%s/2.Annotation/2.3.KOG/KOG.list' %
+                   '%s/*Annotation/*KOG/KOG.list' %
                    (args.file), r'KOG', 5, table_format)
         ##COG.annot.xls
         __MJ_table(i, docx, u'蛋白名称', u'KOG编号',
-                   '%s/2.Annotation/2.3.KOG/KOG.annot.xls' %
+                   '%s/*Annotation/*KOG/KOG.annot.xls' %
                    (args.file), r'\[', 10, table_format)
         ##COG.class.catalog.xls
         __MJ_table(i, docx, u'KOG 4种类型', u'KOG功能分类，共25',
-                   '%s/2.Annotation/2.3.KOG/KOG.class.catalog.xls' %
+                   '%s/*Annotation/*KOG/KOG.class.catalog.xls' %
                    (args.file), r'\[', 10, table_format)
         #4.2.1
         ##*_vs_*.diff.exp.xls
         __MJ_table(
             i, docx, u'蛋白Accession编号', u'样本1中该蛋白相对表达量均值',
-            '%s/3.DiffExpAnalysis/3.1.Statistics/Volcano/*_vs_*.diff.exp.xls' %
+            '%s/*DiffExpAnalysis/*Statistics/Volcano/*_vs_*.diff.exp.xls' %
             (args.file), r'\.', 5, table_format)
         #4.2.2
         ##*.enrichment.detail.xls
         __MJ_table(
             i, docx, u'Id', u'Enrichment',
-            '%s/3.DiffExpAnalysis/3.2.GO/Enrichment/*_vs_*.detail.xls'
+            '%s/*DiffExpAnalysis/*GO/Enrichment/*_vs_*.detail.xls'
             % (args.file), r';', 4, table_format)
         #4.2.3
         ##*.pathway.xls
         __MJ_table(i, docx, u'KEGG pathway名称', u'数据库',
-                   '%s/3.DiffExpAnalysis/3.3.KEGG/Enrichment/*.pathway.xls' %
+                   '%s/*DiffExpAnalysis/*KEGG/Enrichment/*.pathway.xls' %
                    (args.file), r'ko', 5, table_format)
         #4.2.5
         ##*_vs_*.network.xls
         __MJ_table(i, docx, r'node1', r'node2',
-                   '%s/3.DiffExpAnalysis/3.5.Network/*interraction.xls' %
+                   '%s/*DiffExpAnalysis/*Network/*interraction.xls' %
                    (args.file), r'\.', 5, table_format)
         ##*_vs_*.annotation.xls
         __MJ_table(i, docx, u'蛋白名', u'蛋白uniprot登录号',
-                   '%s/3.DiffExpAnalysis/3.5.Network/*annotation.xls' %
+                   '%s/*DiffExpAnalysis/*Network/*annotation.xls' %
                    (args.file), r'\.', 5, table_format)
 
 
@@ -327,9 +327,7 @@ def __MJ_jpg(i, docx, mark, file):
                 os.system('''convert %s -crop 6000x3200+0+800 %s''' %
                           (file_jpg, file_jpg))
             elif u'kegg_classification.pdf：对蛋白做KO注释后，可根据它们参与的KEGG代谢通路进行分类' in mark:
-                os.system('''convert %s -crop 2550x2300+0+800 %s''' %
-                          (file_jpg, file_jpg))
-                os.system('''convert %s -crop 2550x1800+0+0 %s''' %
+                os.system('''convert %s -crop 2550x1800+0+800 %s''' %
                           (file_jpg, file_jpg))
             elif u'*.Venn.pdf：差异蛋白Venn图' in mark:
                 os.system('''convert %s -crop 2100x2100+450+450 %s''' %
@@ -339,13 +337,21 @@ def __MJ_jpg(i, docx, mark, file):
             elif u'Heatmap.pdf：差异蛋白表达模式聚类图' in mark:
                 os.system('''convert %s -crop 3600x2400+0+0 %s''' %
                           (file_jpg, file_jpg))            
+            elif u'Protein_coverage_distribution.pdf：蛋白覆盖度分布饼图' in mark:
+                os.system('''convert %s -crop 2400x1800+800+300 %s''' %
+                          (file_jpg, file_jpg))                     
+            elif u'*_vs_*.volcano.pdf：各分组样本差异蛋白可视化火山图' in mark:
+                os.system('''convert %s -crop 2000x1500+200+100 %s''' %
+                          (file_jpg, file_jpg))        
             docx.paragraphs[i + 1].add_run()
             docx.paragraphs[i + 1].runs[1].style.style_id = docx.paragraphs[
                 i + 1].runs[0].style.style_id
             if u'富集分析' in mark:
-                docx.paragraphs[i + 1].runs[1].add_picture(file_jpg, width=6000000)  
+                docx.paragraphs[i + 1].runs[1].add_picture(file_jpg, width=6000000)
+            elif u'*.Venn.pdf：差异蛋白Venn图' in mark:
+                docx.paragraphs[i + 1].runs[1].add_picture(file_jpg, width=3500000)  
             else:	
-                docx.paragraphs[i + 1].runs[1].add_picture(file_jpg, width=4000000)
+                docx.paragraphs[i + 1].runs[1].add_picture(file_jpg, width=4500000)
             docx.paragraphs[i + 1].runs[0].clear()
     except:
         pass
@@ -358,99 +364,99 @@ def _MJ_jpgs(docx):
         #print docx.paragraphs[i].text
         ##肽段匹配误差分布图
         __MJ_jpg(i, docx, u'dMass.pdf：肽段匹配误差分布图',
-                 '%s/1.QualityControl/dMass.pdf' % (args.file))
+                 '%s/*QualityControl/dMass.pdf' % (args.file))
         ##肽段数量分布柱状图
         __MJ_jpg(i, docx, u'Peptide_number_distribution.pdf：肽段数量分布柱状图',
-                 '%s/1.QualityControl/Peptide_number_distribution.pdf' %
+                 '%s/*QualityControl/Peptide_number_distribution.pdf' %
                  (args.file))
         ##肽段长度分布柱状图
         __MJ_jpg(i, docx, u'Peptide_length_distribution.pdf：肽段长度分布柱状图',
-                 '%s/1.QualityControl/Peptide_length_distribution.pdf' %
+                 '%s/*QualityControl/Peptide_length_distribution.pdf' %
                  (args.file))
         ##蛋白分子量分布柱状图
         __MJ_jpg(
             i, docx, u'Protein_molecular_weight_distribution.pdf：蛋白分子量分布柱状图',
-            '%s/1.QualityControl/Protein_molecular_weight_distribution.pdf' %
+            '%s/*QualityControl/Protein_molecular_weight_distribution.pdf' %
             (args.file))
         ##蛋白覆盖度分布饼图
         __MJ_jpg(i, docx, u'Protein_coverage_distribution.pdf：蛋白覆盖度分布饼图',
-                 '%s/1.QualityControl/Protein_coverage_distribution.pdf' %
+                 '%s/*QualityControl/Protein_coverage_distribution.pdf' %
                  (args.file))
         ##鉴定蛋白质信息统计柱状图
         __MJ_jpg(i, docx, u'Protein_information.pdf：鉴定蛋白质信息统计柱状图',
-                 '%s/1.QualityControl/Protein_information.pdf' % (args.file))
+                 '%s/*QualityControl/Protein_information.pdf' % (args.file))
         #4.1.1
         ##GO二级分类统计条形图
         __MJ_jpg(i, docx, u'level2.go.txt.pdf：GO二级分类统计条形图',
-                 '%s/2.Annotation/2.1.GO/level2.go.txt.pdf' % (args.file))
+                 '%s/*Annotation/*GO/level2.go.txt.pdf' % (args.file))
         ##GO二级、三级、四级分类统计九饼图
         __MJ_jpg(i, docx, u'level234.pdf：GO二级、三级、四级分类统计九饼图',
-                 '%s/2.Annotation/2.1.GO/GO.list.Level234.pdf' % (args.file))
+                 '%s/*Annotation/*GO/GO.list.Level234.pdf' % (args.file))
         #4.1.2
         ##包含蛋白数目最多的前20个通路
         __MJ_jpg(i, docx, u'pathway.top20.pdf：包含蛋白数目最多的前20个通路（除以ko01开头的基础通路外）',
-                 '%s/2.Annotation/2.2.KEGG/pathway.top20.pdf' % (args.file))
+                 '%s/*Annotation/*KEGG/pathway.top20.pdf' % (args.file))
         ##KEGG通路图片展示
         __MJ_jpg(i, docx, u'pathways文件夹下的.png文件：KEGG通路图片展示',
-                 '%s/2.Annotation/2.2.KEGG/pathways/*.png' % (args.file))
+                 '%s/*Annotation/*KEGG/pathways/*.png' % (args.file))
         ##KEGG代谢通路进行分类
         __MJ_jpg(
             i, docx, u'kegg_classification.pdf：对蛋白做KO注释后，可根据它们参与的KEGG代谢通路进行分类',
-            '%s/2.Annotation/2.2.KEGG/kegg_classification.pdf' % (args.file))
+            '%s/*Annotation/*KEGG/kegg_classification.pdf' % (args.file))
         #4.1.3
         ##COG功能分类统计柱图
         __MJ_jpg(i, docx, u'COG.class.catalog.pdf：COG功能分类统计柱图',
-                 '%s/2.Annotation/2.3.COG/COG.class.catalog.pdf' % (args.file))
+                 '%s/*Annotation/*COG/COG.class.catalog.pdf' % (args.file))
         ##KOG功能分类统计图
         __MJ_jpg(i, docx, u'KOG.class.catalog.pdf：KOG功能分类统计柱图',
-                 '%s/2.Annotation/2.3.KOG/KOG.class.catalog.pdf' % (args.file))
+                 '%s/*Annotation/*KOG/KOG.class.catalog.pdf' % (args.file))
         #4.2.1
         ##差异蛋白可视化火山图
         __MJ_jpg(
             i, docx, u'*_vs_*.volcano.pdf：各分组样本差异蛋白可视化火山图',
-            '%s/3.DiffExpAnalysis/3.1.Statistics/Volcano/*_vs_*.volcano.pdf' %
+            '%s/*DiffExpAnalysis/*Statistics/Volcano/*_vs_*.volcano.pdf' %
             (args.file))
         ##差异蛋白Venn图
         __MJ_jpg(i, docx, u'*.Venn.pdf：差异蛋白Venn图',
-                 '%s/3.DiffExpAnalysis/3.1.Statistics/Venn/*Venn.pdf' %
+                 '%s/*DiffExpAnalysis/*Statistics/Venn/*Venn.pdf' %
                  (args.file))
         #4.2.2
         ##上下调蛋白GO注释柱形图
         __MJ_jpg(i, docx, u'*gobars.pdf：上下调蛋白GO注释柱形图',
-                 '%s/3.DiffExpAnalysis/3.2.GO/Annotation/*gobars.pdf' %
+                 '%s/*DiffExpAnalysis/*GO/Annotation/*gobars.pdf' %
                  (args.file))
         ##GO功能富集分析柱状图
         __MJ_jpg(i, docx, u'*.enrichment.detail.xls.go.pdf：各分组差异蛋白GO功能富集分析柱状图',
-                 '%s/3.DiffExpAnalysis/3.2.GO/Enrichment/*.go.pdf' %
+                 '%s/*DiffExpAnalysis/*GO/Enrichment/*.go.pdf' %
                  (args.file))
         #4.2.3
         ##差异蛋白KEGG通路图片展示
         __MJ_jpg(
             i, docx, u'*.png：差异蛋白KEGG通路图片展示',
-            '%s/3.DiffExpAnalysis/3.3.KEGG/Annotation/*_vs_*.diff.exp.xls.path/*.png'
+            '%s/*DiffExpAnalysis/*KEGG/Annotation/*_vs_*.diff.exp.xls.path/*.png'
             % (args.file))
         ##分组差异蛋白KEGG pathway富集分析柱状图
         __MJ_jpg(i, docx, u'*.pathway.pdf：各分组差异蛋白KEGG pathway富集分析柱状图',
-                 '%s/3.DiffExpAnalysis/3.3.KEGG/Enrichment/*pathway.pdf' %
+                 '%s/*DiffExpAnalysis/*KEGG/Enrichment/*pathway.pdf' %
                  (args.file))
         #4.2.4
         ##差异蛋白表达模式聚类图
         __MJ_jpg(i, docx, u'Heatmap.pdf：差异蛋白表达模式聚类图',
-                 '%s/3.DiffExpAnalysis/3.4.Cluster/Heatmap.pdf' % (args.file))
+                 '%s/*DiffExpAnalysis/*Cluster/Heatmap.pdf' % (args.file))
         ##差异蛋白模块（clusters）表达趋势折线图
         __MJ_jpg(
             i, docx,
             u'Heatmap_trendlines_for_*_subclusters.pdf：差异蛋白模块（clusters）表达趋势折线图',
-            '%s/3.DiffExpAnalysis/3.4.Cluster/*subclusters.pdf' % (args.file))
+            '%s/*DiffExpAnalysis/*Cluster/*subclusters.pdf' % (args.file))
         #4.2.5
         ##两组样本之间差异蛋白的蛋白互作图（png格式）
         __MJ_jpg(i, docx, u'*_vs_*.network.png：两组样本之间差异蛋白的蛋白互作图（png格式）',
-                 '%s/3.DiffExpAnalysis/3.5.Network/*confidence.png' %
+                 '%s/*DiffExpAnalysis/*Network/*confidence.png' %
                  (args.file))
         #4.2.6
         ##Ipath整合通路图
         __MJ_jpg(i, docx, u'*_vs_*.Ipath.png：Ipath整合通路图（png格式）',
-                 '%s/3.DiffExpAnalysis/3.6.Ipath/*ipath.png' % (args.file))
+                 '%s/*DiffExpAnalysis/*Ipath/*ipath.png' % (args.file))
     #os.system('rm -rf tmp')
 
 

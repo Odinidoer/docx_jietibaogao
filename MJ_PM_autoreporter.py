@@ -300,7 +300,7 @@ def _MJ_tables(docx):
         #4.2.5
         ##*_vs_*.network.xls
         __MJ_table(i, docx, r'node1', r'node2',
-                   '%s/*DiffExpAnalysis/*Network/*interraction.xls' %
+                   '%s/*DiffExpAnalysis/*Network/*interaction.xls' %
                    (args.file), r'\.', 5, table_format)
         ##*_vs_*.annotation.xls
         __MJ_table(i, docx, u'蛋白名', u'蛋白uniprot登录号',
@@ -312,7 +312,7 @@ def _MJ_tables(docx):
 def __MJ_jpg(i, docx, mark, file):
     try:
         file = commands.getoutput('''ls %s |head -1 ''' % file)
-        if u'%s' % mark in docx.paragraphs[i].text:
+        if u'%s' % mark in docx.paragraphs[i].text and not r'cannot access' in file:
             file_pdf = file
             file_jpg = 'tmp/%s.jpg' % (file.split('/')[-1])
             if 'pdf' in file:
@@ -333,7 +333,8 @@ def __MJ_jpg(i, docx, mark, file):
                 os.system('''convert %s -crop 2100x2100+450+450 %s''' %
                           (file_jpg, file_jpg))
             elif u'Heatmap_trendlines_for_' in mark:
-                file_jpg = 'tmp/Heatmap_trendlines_for_10_subclusters.pdf-0.jpg'
+                file_jpg = 'tmp/Heatmap_trendlines_for_*_subclusters.pdf-0.jpg'
+                file_jpg = commands.getoutput('''ls %s |head -1 ''' % file_jpg)
             elif u'Heatmap.pdf：差异蛋白表达模式聚类图' in mark:
                 os.system('''convert %s -crop 3600x2400+0+0 %s''' %
                           (file_jpg, file_jpg))            
@@ -353,6 +354,7 @@ def __MJ_jpg(i, docx, mark, file):
             else:	
                 docx.paragraphs[i + 1].runs[1].add_picture(file_jpg, width=4500000)
             docx.paragraphs[i + 1].runs[0].clear()
+            print file_jpg
     except:
         pass
 
@@ -361,7 +363,7 @@ def _MJ_jpgs(docx):
     if not os.path.isdir('tmp'):
         os.mkdir('tmp')
     for i in range(len(docx.paragraphs)):
-        #print docx.paragraphs[i].text
+        print docx.paragraphs[i].text
         ##肽段匹配误差分布图
         __MJ_jpg(i, docx, u'dMass.pdf：肽段匹配误差分布图',
                  '%s/*QualityControl/dMass.pdf' % (args.file))
@@ -457,45 +459,42 @@ def _MJ_jpgs(docx):
         ##Ipath整合通路图
         __MJ_jpg(i, docx, u'*_vs_*.Ipath.png：Ipath整合通路图（png格式）',
                  '%s/*DiffExpAnalysis/*Ipath/*ipath.png' % (args.file))
-    #os.system('rm -rf tmp')
 
-
-if __name__ == '__main__':
-    try:
-        _first_page(docx2)
-        print '\ndocx2`s first page is done!'
-    except:
-        print '\ndocx2`s first page is not done!'
-    try:
-        _first_page(docx3)
-        print 'docx3`s first page is done!'
-    except:
-        print 'docx3`s first page is not done!'
-    try:
-        _project_info(docx2)
-        print 'docx2`s project_info is done!'
-    except:
-        print 'docx2`s project_info is not done!'
-    try:
-        _project_info(docx3)
-        print 'docx3`s project_info is done!'
-    except:
-        print 'docx3`s project_info is not done!'
-    try:
-        _MJ_tables(docx3)
-        print 'docx3`s tables is done!'
-    except:
-        print 'docx3`s tables is not done!'
-    try:
-        _MJ_jpgs(docx2)
-        print 'docx2`s jpgs is done!'
-    except:
-        print 'docx3`s jpgs is not done!'
-    try:
-        _MJ_jpgs(docx3)
-        print 'docx3`s jpgs is done!'
-    except:
-        print 'docx3`s jpgs is not done!'
-    docx2.save('M2.docx')
-    docx3.save('M3.docx')
-    print 'done!'
+try:
+    _first_page(docx2)
+    print '\ndocx2`s first page is done!'
+except:
+    print '\ndocx2`s first page is not done!'
+try:
+    _first_page(docx3)
+    print 'docx3`s first page is done!'
+except:
+    print 'docx3`s first page is not done!'
+try:
+    _project_info(docx2)
+    print 'docx2`s project_info is done!'
+except:
+    print 'docx2`s project_info is not done!'
+try:
+    _project_info(docx3)
+    print 'docx3`s project_info is done!'
+except:
+    print 'docx3`s project_info is not done!'
+try:
+    _MJ_tables(docx3)
+    print 'docx3`s tables is done!'
+except:
+    print 'docx3`s tables is not done!'
+try:
+    _MJ_jpgs(docx2)
+    print 'docx2`s jpgs is done!'
+except:
+    print 'docx3`s jpgs is not done!'
+docx2.save('M2.docx')
+try:
+    _MJ_jpgs(docx3)
+    print 'docx3`s jpgs is done!'
+except:
+    print 'docx3`s jpgs is not done!'
+docx3.save('M3.docx')
+print 'done!'

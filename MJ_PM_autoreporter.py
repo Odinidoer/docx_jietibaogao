@@ -79,7 +79,7 @@ supporter = re.findall(u'技术支持\t(.*?)\t电话\t(.*?)\t技术支持\t(.*?)
                        project_info)[0]
 
 
-###项目信息等级，好像只能一个一个写入
+###项目信息登记，好像只能一个一个写入
 def _project_info(docx):
     for i in range(len(docx.tables)):
         if u'项目名称' in docx.tables[i].rows[0].cells[0].text:
@@ -208,19 +208,13 @@ def __MJ_table(i, docx, header1, header2, file, judgment1, judgment2,
                         if 0 < count and count < judgment2:
                             for j in range(
                                     len(docx.tables[i].rows[mark].cells)):
-                                docx.tables[i].rows[mark].cells[j].paragraphs[
-                                    0].add_run()
                                 run = docx.tables[i].rows[mark].cells[
-                                    j].paragraphs[0].runs[1]
+                                    j].paragraphs[0].runs[0]
+                                font_name = run.font.name
+                                font_size = run.font.size								
                                 run.text = items[j]
-                                run.font.size = docx.tables[i].rows[
-                                    mark].cells[j].paragraphs[0].runs[
-                                        0].font.size
-                                run.font.name = docx.tables[i].rows[
-                                    mark].cells[j].paragraphs[0].runs[
-                                        0].font.name
-                                docx.tables[i].rows[mark].cells[j].paragraphs[
-                                    0].runs[0].clear()
+                                run.font.size = font_size
+                                run.font.name = font_name
                                 docx.tables[i].rows[mark].cells[j].paragraphs[
                                     0].paragraph_format.alignment = table_format
                             mark += 1

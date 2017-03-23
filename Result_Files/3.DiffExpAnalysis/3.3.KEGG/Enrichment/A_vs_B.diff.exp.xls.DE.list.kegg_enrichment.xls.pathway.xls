@@ -1,0 +1,15 @@
+#Term	Database	Id	Sample number	Background number	P-Value	Corrected P-Value	Proteins	Hyperlink
+Citrate cycle (TCA cycle)	KEGG PATHWAY	ko00020	2	8	0.116480460206	0.62251021013	F0R8U0|F0R1G1	http://www.genome.jp/kegg-bin/show_pathway?ko00020/K01676%09red/K00174%09red
+Pentose and glucuronate interconversions	KEGG PATHWAY	ko00040	2	5	0.0606760629119	0.62251021013	F0R2I5|F0R1I9	http://www.genome.jp/kegg-bin/show_pathway?ko00040/K00854%09red/K01804%09red
+Purine metabolism	KEGG PATHWAY	ko00230	1	12	0.561287128679	0.634079958134	F0R1G8	http://www.genome.jp/kegg-bin/show_pathway?ko00230/K00602%09red
+Alanine, aspartate and glutamate metabolism	KEGG PATHWAY	ko00250	1	6	0.355720120074	0.62251021013	D5ESC7	http://www.genome.jp/kegg-bin/show_pathway?ko00250/K00262%09red
+Arginine and proline metabolism	KEGG PATHWAY	ko00330	1	6	0.355720120074	0.62251021013	D5ESC7	http://www.genome.jp/kegg-bin/show_pathway?ko00330/K00262%09red
+Pyruvate metabolism	KEGG PATHWAY	ko00620	1	13	0.588788532553	0.634079958134	F0R164	http://www.genome.jp/kegg-bin/show_pathway?ko00620/K00925%09red
+Methane metabolism	KEGG PATHWAY	ko00680	1	9	0.46788027717	0.634079958134	F0R164	http://www.genome.jp/kegg-bin/show_pathway?ko00680/K00925%09red
+Carbon fixation pathways in prokaryotes	KEGG PATHWAY	ko00720	3	21	0.168224148508	0.62251021013	F0R164|F0R8U0|F0R1G1	http://www.genome.jp/kegg-bin/show_pathway?ko00720/K01676%09red/K00925%09red/K00174%09red
+Nitrogen metabolism	KEGG PATHWAY	ko00910	1	6	0.355720120074	0.62251021013	D5ESC7	http://www.genome.jp/kegg-bin/show_pathway?ko00910/K00262%09red
+Sulfur metabolism	KEGG PATHWAY	ko00920	1	5	0.313570969051	0.62251021013	B8DRW2	http://www.genome.jp/kegg-bin/show_pathway?ko00920/K11180%09red
+Carbon metabolism	KEGG PATHWAY	ko01200	3	44	0.559064321247	0.634079958134	F0R164|F0R8U0|F0R1G1	http://www.genome.jp/kegg-bin/show_pathway?ko01200/K01676%09red/K00925%09red/K00174%09red
+Ribosome	KEGG PATHWAY	ko03010	2	34	0.663098021657	0.663098021657	F0R8V5|D4LMP1	http://www.genome.jp/kegg-bin/show_pathway?ko03010/K02933%09red/K02864%09red
+RNA degradation	KEGG PATHWAY	ko03018	1	8	0.432740295473	0.634079958134	D4JXK9	http://www.genome.jp/kegg-bin/show_pathway?ko03018/K04043%09red
+Tuberculosis	KEGG PATHWAY	ko05152	1	6	0.355720120074	0.62251021013	D4JXK9	http://www.genome.jp/kegg-bin/show_pathway?ko05152/K04043%09red

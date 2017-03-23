@@ -1,0 +1,25 @@
+Pathway	Pathway_definition	Number_of_proteins	Proteins_ko_list	Pathway_image_name
+path:ko00010	Glycolysis / Gluconeogenesis	1	F0R8U0(K00174);	ko00010.png
+path:ko00020	Citrate cycle (TCA cycle)	2	F0R1G1(K01676);F0R8U0(K00174);	ko00020.png
+path:ko00040	Pentose and glucuronate interconversions	2	F0R1I9(K01804);F0R2I5(K00854);	ko00040.png
+path:ko00220	Arginine biosynthesis	1	D5ESC7(K00262);	ko00220.png
+path:ko00230	Purine metabolism	1	F0R1G8(K00602);	ko00230.png
+path:ko00250	Alanine, aspartate and glutamate metabolism	1	D5ESC7(K00262);	ko00250.png
+path:ko00430	Taurine and hypotaurine metabolism	1	F0R164(K00925);	ko00430.png
+path:ko00620	Pyruvate metabolism	3	F0R164(K00925);F0R1G1(K01676);F0R8U0(K00174);	ko00620.png
+path:ko00633	Nitrotoluene degradation	1	B8DRW2(K11180);	ko00633.png
+path:ko00640	Propanoate metabolism	1	F0R164(K00925);	ko00640.png
+path:ko00650	Butanoate metabolism	1	F0R8U0(K00174);	ko00650.png
+path:ko00670	One carbon pool by folate	1	F0R1G8(K00602);	ko00670.png
+path:ko00680	Methane metabolism	1	F0R164(K00925);	ko00680.png
+path:ko00720	Carbon fixation pathways in prokaryotes	3	F0R164(K00925);F0R1G1(K01676);F0R8U0(K00174);	ko00720.png
+path:ko00910	Nitrogen metabolism	1	D5ESC7(K00262);	ko00910.png
+path:ko00920	Sulfur metabolism	1	B8DRW2(K11180);	ko00920.png
+path:ko01100	Metabolic pathways	8	B8DRW2(K11180);D5ESC7(K00262);F0R164(K00925);F0R1G1(K01676);F0R1G8(K00602);F0R1I9(K01804);F0R2I5(K00854);F0R8U0(K00174);	ko01100.png
+path:ko01110	Biosynthesis of secondary metabolites	2	F0R1G1(K01676);F0R1G8(K00602);	ko01110.png
+path:ko01120	Microbial metabolism in diverse environments	4	B8DRW2(K11180);F0R164(K00925);F0R1G1(K01676);F0R8U0(K00174);	ko01120.png
+path:ko01130	Biosynthesis of antibiotics	3	F0R1G1(K01676);F0R1G8(K00602);F0R8U0(K00174);	ko01130.png
+path:ko01200	Carbon metabolism	3	F0R164(K00925);F0R1G1(K01676);F0R8U0(K00174);	ko01200.png
+path:ko03010	Ribosome	2	D4LMP1(K02933);F0R8V5(K02864);	ko03010.png
+path:ko03018	RNA degradation	1	D4JXK9(K04043);	ko03018.png
+path:ko05152	Tuberculosis	1	D4JXK9(K04043);	ko05152.png

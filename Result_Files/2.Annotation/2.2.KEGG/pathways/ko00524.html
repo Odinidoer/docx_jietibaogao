@@ -1,0 +1,390 @@
+<html>
+<!---
+ENTRY       ko00524
+DEFINITION  Butirosin and neomycin biosynthesis
+--->
+<head>
+<title>
+KEGG PATHWAY: Butirosin and neomycin biosynthesis
+</title>
+<style type="text/css">
+<!--
+div.poplay {
+  position: absolute;
+  padding: 2px;
+  background-color: #ffff99;
+  border-top: solid 1px #c0c0c0;
+  border-left: solid 1px #c0c0c0;
+  border-bottom: solid 1px #808080;
+  border-right: solid 1px #808080;
+  visibility: hidden;
+}
+
+span.popup
+{
+  font-weight: bold;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+form {
+  margin: 0px;
+}
+
+div.image {
+  position: absolute;
+  padding: 0px;
+  top: 0px;
+  padding: 0px;
+  border: solid 1px #000000;
+}
+
+img {
+  border: none;
+}
+
+
+-->
+</style>
+<link rel="stylesheet" href="http://www.kegg.jp/css/kegg.css" type="text/css" />
+<script language="JavaScript" src="http://www.kegg.jp/js/dhtml.js"></script>
+
+<script language="JavaScript">
+<!---
+var image_height;
+$(function(){
+	$(window).bind('load',function(){
+  image_height = $("div.image").height()-10;
+	$("div.control").height(image_height-5);
+	$("#resizable").height(image_height);
+	});
+});
+
+
+function resize_map(scale){
+  var form = document.forms["form2"];
+  form.scale.value = scale;
+  form.submit();
+}
+
+function select_menu(){
+  var form = document.forms["selmenu"];
+  if(form.org_name.value == 'set_cookie' || form.org_name.value == 'reset_cookie'){
+    window.open('http://www.kegg.jp/kegg/misc/kegg2_select.html','sel_org','toolbar=no,location=no,directories=no,width=500,height=320,resizable=yes');
+  }else{
+    form.action='http://www.kegg.jp/kegg-bin/show_pathway';
+    form.submit();
+  }
+}
+
+var timer = 0;
+var p_entry, p_title, p_bgcolor;
+function popupTimer(entry, title, bgcolor)
+{
+  p_entry = entry;
+  p_title = title;
+  p_bgcolor = bgcolor;
+
+  if(timer == 0){
+    var func = "showThumbnail()";
+    timer = setTimeout(func, 1200);
+  }
+}
+
+
+function showThumbnail()
+{
+
+  var url = "";
+  if(p_entry.match(/^[A-Z]+\d+$/))
+  {
+    url = "http://www.kegg.jp/kegg/misc/thumbnail/" + p_entry + ".gif";
+  }
+  else if(p_entry.match(/(\d+)$/))
+  {
+    url = "http://www.kegg.jp/kegg/misc/thumbnail/map" + RegExp.$1 + ".gif";
+  }
+
+  var html = "";
+
+  if(p_bgcolor != "#ffffff")
+  {
+    html += "<span class=\"popup\">" + p_entry + "</span><br />";
+  }
+
+  html += "<img src=\"" + url + "\" alt=\"Loading...\">";
+
+  var x = getCurrentMouseX();
+  var y = getCurrentMouseY();
+
+  var layer = new Component("poplay");
+  layer.backgroundColor(p_bgcolor);
+  layer.HTML(html);
+  layer.move(x, y+40);
+  layer.visible(true);
+
+  timer = 0;
+}
+
+function hideMapTn(){
+  var layer = new Component("poplay");
+  layer.visible(false);
+
+  if(timer != 0){
+    clearTimeout(timer);
+    timer = 0;
+  }
+}
+
+function switchDescription(){
+  var form = document.forms[0];
+  var status = form.show_description.value;
+
+  if(status == "hide"){
+    document.getElementById("description").style.display = "";
+    document.getElementById("descLink").innerHTML = "Hide description";
+    form.show_description.value='show';
+
+    if(document.forms[1]){
+    	document.forms[1].show_description.value='show';
+    }
+  }
+  else
+  {
+    document.getElementById("description").style.display = 'none';
+    document.getElementById("descLink").innerHTML = "Show description";
+    form.show_description.value='hide';
+
+    if(document.forms[1]){
+      document.forms[1].show_description.value='hide';
+    }
+  }
+}
+
+function btn(bobj,img) { bobj.src = "http://www.kegg.jp/Fig/bget/button_" + img + ".gif"; }
+//--->
+</script>
+</head>
+<body>
+<table cellpadding="0" width="100%" cellspacing="0" border="0">
+ <tr>
+  <td>
+   <a href="http://www.kegg.jp/kegg/kegg2.html"><img align="middle" alt="KEGG" border="0" src="http://www.kegg.jp/Fig/bget/kegg3.gif" /></a>
+   &nbsp;&nbsp;&nbsp;<font class="title3"><b>Butirosin and neomycin biosynthesis</b></font>
+  </td>
+  <td valign="bottom" align="right">
+   <a href="javascript:void(window.open('http://www.kegg.jp/kegg/document/help_pathway.html','KEGG_Help','toolbar=no,location=no,directories=no,width=720,height=640,resizable=yes,scrollbars=yes'))"><img name="help" src="http://www.kegg.jp/Fig/bget/button_Hb.gif" border="0" align="middle" alt="Help" onmouseout="btn(this,'Hb')" onmousedown="btn(this,'Hbd')" onmouseover="btn(this,'Hbh')" onmouseup="btn(this,'Hb')" /></a>
+  </td>
+ </tr>
+</table>
+
+  
+[
+<a href="http://www.kegg.jp/kegg-bin/get_htext?query=00524&htext=br08901.keg&option=-a">Pathway menu</a>
+| <a href="http://www.kegg.jp/kegg-bin/get_htext?htext=br08601_map00524.keg&hier=5">Organism menu</a>
+| <a href="http://www.kegg.jp/dbget-bin/www_bget?pathway+ko00524">Pathway entry</a>
+
+| <a href="http://www.kegg.jp/kegg-bin/download?entry=ko00524&format=kgml">Download KGML</a>
+
+| <a href="javascript:void(window.open('http://www.kegg.jp/kegg/tool/color_a_pathway.html','KEGG_Help','height=300,width=600,resizable=yes,scrollbars=yes'))">User data mapping</a>
+
+]
+  
+
+<table><tr><td>
+<form name="selmenu" method="get">
+<select name="org_name">
+<option value="map">Reference pathway</option>
+<option value="ko" selected>Reference pathway (KO)</option>
+<option value="ec">Reference pathway (EC)</option>
+<option value="rn">Reference pathway (Reaction)</option>
+<option value="set_cookie">-----&lt; Set personalized menu &gt;-----</option>
+<option value="ko.sort_alp">-----&lt; Sort below by alphabet &gt;-----</option>
+<option value="hsa">Homo sapiens (human)</option>
+<option value="hsadd">Homo sapiens (human) + Disease/drug</option>
+<option value="ptr">Pan troglodytes (chimpanzee)</option>
+<option value="pps">Pan paniscus (bonobo)</option>
+<option value="ggo">Gorilla gorilla gorilla (western lowland gorilla)</option>
+<option value="pon">Pongo abelii (Sumatran orangutan)</option>
+<option value="nle">Nomascus leucogenys (northern white-cheeked gibbon)</option>
+<option value="mcc">Macaca mulatta (rhesus monkey)</option>
+<option value="mcf">Macaca fascicularis (crab-eating macaque)</option>
+<option value="cjc">Callithrix jacchus (white-tufted-ear marmoset)</option>
+<option value="mmu">Mus musculus (mouse)</option>
+<option value="rno">Rattus norvegicus (rat)</option>
+<option value="cge">Cricetulus griseus (Chinese hamster)</option>
+<option value="ngi">Nannospalax galili (Upper Galilee mountains blind mole rat)</option>
+<option value="hgl">Heterocephalus glaber (naked mole rat)</option>
+<option value="ocu">Oryctolagus cuniculus (rabbit)</option>
+<option value="tup">Tupaia chinensis (Chinese tree shrew)</option>
+<option value="cfa">Canis familiaris (dog)</option>
+<option value="aml">Ailuropoda melanoleuca (giant panda)</option>
+<option value="umr">Ursus maritimus (polar bear)</option>
+<option value="fca">Felis catus (domestic cat)</option>
+<option value="ptg">Panthera tigris altaica (Amur tiger)</option>
+<option value="bta">Bos taurus (cow)</option>
+<option value="bom">Bos mutus (wild yak)</option>
+<option value="phd">Pantholops hodgsonii (chiru)</option>
+<option value="chx">Capra hircus (goat)</option>
+<option value="oas">Ovis aries (sheep)</option>
+<option value="ssc">Sus scrofa (pig)</option>
+<option value="cfr">Camelus ferus (Wild Bactrian camel)</option>
+<option value="bacu">Balaenoptera acutorostrata scammoni (minke whale)</option>
+<option value="lve">Lipotes vexillifer (Yangtze River dolphin)</option>
+<option value="ecb">Equus caballus (horse)</option>
+<option value="myb">Myotis brandtii (Brandt's bat)</option>
+<option value="myd">Myotis davidii</option>
+<option value="pale">Pteropus alecto (black flying fox)</option>
+<option value="mdo">Monodelphis domestica (opossum)</option>
+<option value="shr">Sarcophilus harrisii (Tasmanian devil)</option>
+<option value="oaa">Ornithorhynchus anatinus (platypus)</option>
+<option value="gga">Gallus gallus (chicken)</option>
+<option value="tgu">Taeniopygia guttata (zebra finch)</option>
+<option value="fab">Ficedula albicollis (collared flycatcher)</option>
+<option value="phi">Pseudopodoces humilis (Tibetan ground-tit)</option>
+<option value="fpg">Falco peregrinus (peregrine falcon)</option>
+<option value="fch">Falco cherrug (Saker falcon)</option>
+<option value="clv">Columba livia (rock pigeon)</option>
+<option value="asn">Alligator sinensis (Chinese alligator)</option>
+<option value="amj">Alligator mississippiensis (American alligator)</option>
+<option value="pss">Pelodiscus sinensis (Chinese soft-shelled turtle)</option>
+<option value="cmy">Chelonia mydas (green sea turtle)</option>
+<option value="acs">Anolis carolinensis (green anole)</option>
+<option value="pbi">Python bivittatus (Burmese python)</option>
+<option value="xla">Xenopus laevis (African clawed frog)</option>
+<option value="xtr">Xenopus tropicalis (western clawed frog)</option>
+<option value="dre">Danio rerio (zebrafish)</option>
+<option value="tru">Takifugu rubripes (torafugu)</option>
+<option value="mze">Maylandia zebra (zebra mbuna)</option>
+<option value="ola">Oryzias latipes (Japanese medaka)</option>
+<option value="xma">Xiphophorus maculatus (southern platyfish)</option>
+<option value="lcm">Latimeria chalumnae (coelacanth)</option>
+<option value="cmk">Callorhinchus milii (elephant shark)</option>
+<option value="ehx">Emiliania huxleyi</option>
+<option value="tcr">Trypanosoma cruzi</option>
+<option value="lma">Leishmania major</option>
+<option value="lif">Leishmania infantum</option>
+<option value="ldo">Leishmania donovani</option>
+<option value="lmi">Leishmania mexicana</option>
+<option value="lbz">Leishmania braziliensis</option>
+<option value="scl">Sorangium cellulosum So ce 56</option>
+<option value="scu">Sorangium cellulosum So0157-2</option>
+<option value="cce">Clostridium cellulolyticum</option>
+<option value="clb">Clostridium sp. BNL1100</option>
+<option value="tep">Tepidanaerobacter acetatoxydans Re1</option>
+<option value="tae">Tepidanaerobacter acetatoxydans Re1</option>
+<option value="tbe">Treponema brennaborense</option>
+<option value="taz">Treponema azotonutricium</option>
+<option value="ssm">Spirochaeta smaragdinae</option>
+<option value="sbu">Sphaerochaeta globosa</option>
+<option value="scc">Sphaerochaeta coccoides</option>
+<option value="sgp">Sphaerochaeta pleomorpha</option>
+<option value="bth">Bacteroides thetaiotaomicron</option>
+<option value="bfr">Bacteroides fragilis YCH46</option>
+<option value="bfs">Bacteroides fragilis NCTC9343</option>
+<option value="bfg">Bacteroides fragilis 638R</option>
+<option value="bxy">Bacteroides xylanisolvens</option>
+<option value="pdi">Parabacteroides distasonis</option>
+<option value="rbc">Rikenellaceae bacterium</option>
+<option value="doi">Draconibacterium orientale</option>
+</select>
+<input type="hidden" name="mapno" value="00524" />
+<input type="hidden" name="mapscale" value=>
+<input type="button" value="Go" onclick="select_menu(this.form)" />
+<input type="hidden" name="show_description" value="hide">
+
+</form>
+</td><td>
+<form name="form2" method="get" action="http://www.kegg.jp/kegg-bin/show_pathway">
+&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="scale" onChange="resize_map(this.form.scale.value)">
+<option value="1.84" >184%</option>
+<option value="1.5" >150%</option>
+<option value="1.22" >122%</option>
+<option value="1.0" selected>100%</option>
+<option value="0.82" >82%</option>
+<option value="0.67" >67%</option>
+<option value="0.55" >55%</option>
+</select>
+&nbsp;&nbsp;<input type="text" name="query" size=20 value="">
+<input type="hidden" name="map" value="ko00524" />
+<input type="hidden" name="scale" value=>
+<input type="hidden" name="auto_image" value="">
+<input type="hidden" name="show_description" value="hide">
+<input type="hidden" name="multi_query" />
+
+</form>
+</td></tr></table>
+
+
+<img src="ko00524.png" usemap="#mapdata" border="0" />
+
+<map name="mapdata">
+<area shape=circle	coords=126,128,4	href="http://www.kegg.jp/dbget-bin/www_bget?C00031"	title="C00031 (D-Glucose)" onmouseover="popupTimer(&quot;C00031&quot;, &quot;C00031 (D-Glucose)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=126,189,4	href="http://www.kegg.jp/dbget-bin/www_bget?C00092"	title="C00092 (D-Glucose 6-phosphate)" onmouseover="popupTimer(&quot;C00092&quot;, &quot;C00092 (D-Glucose 6-phosphate)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=238,189,4	href="http://www.kegg.jp/dbget-bin/www_bget?C17209"	title="C17209 (2-Deoxy-scyllo-inosose)" onmouseover="popupTimer(&quot;C17209&quot;, &quot;C17209 (2-Deoxy-scyllo-inosose)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=350,189,4	href="http://www.kegg.jp/dbget-bin/www_bget?C17580"	title="C17580 (2-Deoxy-scyllo-inosamine)" onmouseover="popupTimer(&quot;C17580&quot;, &quot;C17580 (2-Deoxy-scyllo-inosamine)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=462,189,4	href="http://www.kegg.jp/dbget-bin/www_bget?C17581"	title="C17581 (3-Amino-2,3-dideoxy-scyllo-inosose)" onmouseover="popupTimer(&quot;C17581&quot;, &quot;C17581 (3-Amino-2,3-dideoxy-scyllo-inosose)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=574,189,4	href="http://www.kegg.jp/dbget-bin/www_bget?C02627"	title="C02627 (2-Deoxystreptamine)" onmouseover="popupTimer(&quot;C02627&quot;, &quot;C02627 (2-Deoxystreptamine)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=574,250,4	href="http://www.kegg.jp/dbget-bin/www_bget?C17582"	title="C17582 (2'-N-Acetylparomamine)" onmouseover="popupTimer(&quot;C17582&quot;, &quot;C17582 (2'-N-Acetylparomamine)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=574,311,4	href="http://www.kegg.jp/dbget-bin/www_bget?C01743"	title="C01743 (Paromamine)" onmouseover="popupTimer(&quot;C01743&quot;, &quot;C01743 (Paromamine)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=686,311,4	href="http://www.kegg.jp/dbget-bin/www_bget?C17583"	title="C17583 (6'-Dehydro-6'-oxoparomamine)" onmouseover="popupTimer(&quot;C17583&quot;, &quot;C17583 (6'-Dehydro-6'-oxoparomamine)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=798,311,4	href="http://www.kegg.jp/dbget-bin/www_bget?C01441"	title="C01441 (Neamine)" onmouseover="popupTimer(&quot;C01441&quot;, &quot;C01441 (Neamine)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=798,372,4	href="http://www.kegg.jp/dbget-bin/www_bget?C18004"	title="C18004 (5''-Phosphoribostamycin)" onmouseover="popupTimer(&quot;C18004&quot;, &quot;C18004 (5''-Phosphoribostamycin)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=798,433,4	href="http://www.kegg.jp/dbget-bin/www_bget?C01759"	title="C01759 (Ribostamycin)" onmouseover="popupTimer(&quot;C01759&quot;, &quot;C01759 (Ribostamycin)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=798,511,4	href="http://www.kegg.jp/dbget-bin/www_bget?C17587"	title="C17587 (2'''-N-Acetyl-6'''-deamino-6'''-hydroxyneomycin C)" onmouseover="popupTimer(&quot;C17587&quot;, &quot;C17587 (2'''-N-Acetyl-6'''-deamino-6'''-hydroxyneomycin C)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=943,460,4	href="http://www.kegg.jp/dbget-bin/www_bget?C00043"	title="C00043 (UDP-N-acetyl-alpha-D-glucosamine)" onmouseover="popupTimer(&quot;C00043&quot;, &quot;C00043 (UDP-N-acetyl-alpha-D-glucosamine)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=798,572,4	href="http://www.kegg.jp/dbget-bin/www_bget?C17588"	title="C17588 (6'''-Deamino-6'''-hydroxyneomycin C)" onmouseover="popupTimer(&quot;C17588&quot;, &quot;C17588 (6'''-Deamino-6'''-hydroxyneomycin C)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=798,633,4	href="http://www.kegg.jp/dbget-bin/www_bget?C17589"	title="C17589 (6'''-Deamino-6'''-oxoneomycin C)" onmouseover="popupTimer(&quot;C17589&quot;, &quot;C17589 (6'''-Deamino-6'''-oxoneomycin C)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=798,694,4	href="http://www.kegg.jp/dbget-bin/www_bget?C15652"	title="C15652 (Neomycin C)" onmouseover="popupTimer(&quot;C15652&quot;, &quot;C15652 (Neomycin C)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=798,755,4	href="http://www.kegg.jp/dbget-bin/www_bget?C01737"	title="C01737 (Neomycin B)" onmouseover="popupTimer(&quot;C01737&quot;, &quot;C01737 (Neomycin B)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=651,511,4	href="http://www.kegg.jp/dbget-bin/www_bget?C18005"	title="C18005 (gamma-L-Glutamyl-butirosin B)" onmouseover="popupTimer(&quot;C18005&quot;, &quot;C18005 (gamma-L-Glutamyl-butirosin B)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=651,572,4	href="http://www.kegg.jp/dbget-bin/www_bget?C17586"	title="C17586 (Butirosin B)" onmouseover="popupTimer(&quot;C17586&quot;, &quot;C17586 (Butirosin B)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=651,633,4	href="http://www.kegg.jp/dbget-bin/www_bget?C17585"	title="C17585 (Butirosin A)" onmouseover="popupTimer(&quot;C17585&quot;, &quot;C17585 (Butirosin A)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=90,460,4	href="http://www.kegg.jp/dbget-bin/www_bget?C00229"	title="C00229 (Acyl-carrier protein)" onmouseover="popupTimer(&quot;C00229&quot;, &quot;C00229 (Acyl-carrier protein)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=114,397,4	href="http://www.kegg.jp/dbget-bin/www_bget?C00025"	title="C00025 (L-Glutamate)" onmouseover="popupTimer(&quot;C00025&quot;, &quot;C00025 (L-Glutamate)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=202,460,4	href="http://www.kegg.jp/dbget-bin/www_bget?C18006"	title="C18006 (gamma-L-Glutamyl-[acp])" onmouseover="popupTimer(&quot;C18006&quot;, &quot;C18006 (gamma-L-Glutamyl-[acp])&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=314,460,4	href="http://www.kegg.jp/dbget-bin/www_bget?C18007"	title="C18007 (4-Aminobutyryl-[acp])" onmouseover="popupTimer(&quot;C18007&quot;, &quot;C18007 (4-Aminobutyryl-[acp])&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=426,460,4	href="http://www.kegg.jp/dbget-bin/www_bget?C18008"	title="C18008 (4-(gamma-L-Glutamylamino)butanoyl-[acp])" onmouseover="popupTimer(&quot;C18008&quot;, &quot;C18008 (4-(gamma-L-Glutamylamino)butanoyl-[acp])&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=538,460,4	href="http://www.kegg.jp/dbget-bin/www_bget?C18009"	title="C18009 (4-(gamma-L-Glutamylamino)-(2S)-2-hydroxybutanoyl-[acp])" onmouseover="popupTimer(&quot;C18009&quot;, &quot;C18009 (4-(gamma-L-Glutamylamino)-(2S)-2-hydroxybutanoyl-[acp])&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=438,426,4	href="http://www.kegg.jp/dbget-bin/www_bget?C01847"	title="C01847 (Reduced FMN)" onmouseover="popupTimer(&quot;C01847&quot;, &quot;C01847 (Reduced FMN)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=518,426,4	href="http://www.kegg.jp/dbget-bin/www_bget?C00061"	title="C00061 (FMN)" onmouseover="popupTimer(&quot;C00061&quot;, &quot;C00061 (FMN)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=574,127,4	href="http://www.kegg.jp/dbget-bin/www_bget?C20353"	title="C20353 (2'-Deamino-2'-hydroxyparomamine)" onmouseover="popupTimer(&quot;C20353&quot;, &quot;C20353 (2'-Deamino-2'-hydroxyparomamine)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=798,127,4	href="http://www.kegg.jp/dbget-bin/www_bget?C20350"	title="C20350 (2'-Deamino-2'-hydroxyneamine)" onmouseover="popupTimer(&quot;C20350&quot;, &quot;C20350 (2'-Deamino-2'-hydroxyneamine)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=910,127,4	href="http://www.kegg.jp/dbget-bin/www_bget?C00304"	title="C00304 (Kanamycin)" onmouseover="popupTimer(&quot;C00304&quot;, &quot;C00304 (Kanamycin)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=circle	coords=686,127,4	href="http://www.kegg.jp/dbget-bin/www_bget?C20351"	title="C20351 (2'-Deamino-2'-hydroxy-6'-dehydroparomamine)" onmouseover="popupTimer(&quot;C20351&quot;, &quot;C20351 (2'-Deamino-2'-hydroxy-6'-dehydroparomamine)&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=rect	coords=78,147,124,164	href="http://www.kegg.jp/dbget-bin/www_bget?K00844"	title="K00844 (HK)" />
+<area shape=rect	coords=128,147,174,164	href="http://www.kegg.jp/dbget-bin/www_bget?K12407+K00845"	title="K12407 (GCK), K00845 (glk)" />
+<area shape=rect	coords=157,180,203,197	href="http://www.kegg.jp/dbget-bin/www_bget?K13546"	title="K13546 (btrC)" />
+<area shape=rect	coords=269,180,315,197	href="http://www.kegg.jp/dbget-bin/www_bget?K13547"	title="K13547 (btrR)" />
+<area shape=rect	coords=381,191,427,208	href="http://www.kegg.jp/dbget-bin/www_bget?K13548"	title="K13548 (neoA)" />
+<area shape=rect	coords=493,180,539,197	href="http://www.kegg.jp/dbget-bin/www_bget?K13547"	title="K13547 (btrR)" />
+<area shape=rect	coords=552,209,598,226	href="http://www.kegg.jp/dbget-bin/www_bget?K13550"	title="K13550 (btrM)" />
+<area shape=rect	coords=552,269,598,286	href="http://www.kegg.jp/dbget-bin/www_bget?K13551+K17078"	title="K13551 (btrD), K17078 (neoL)" />
+<area shape=rect	coords=605,302,651,319	href="http://www.kegg.jp/dbget-bin/www_bget?K13552"	title="K13552 (btrQ)" />
+<area shape=rect	coords=717,302,763,319	href="http://www.kegg.jp/dbget-bin/www_bget?K13553"	title="K13553 (btrB)" />
+<area shape=rect	coords=776,330,822,347	href="http://www.kegg.jp/dbget-bin/www_bget?K13554"	title="K13554 (btrL)" />
+<area shape=rect	coords=776,391,822,408	href="http://www.kegg.jp/dbget-bin/www_bget?K13555"	title="K13555 (btrP)" />
+<area shape=rect	coords=125,451,171,468	href="http://www.kegg.jp/dbget-bin/www_bget?K13559"	title="K13559 (btrJ)" />
+<area shape=rect	coords=233,451,279,468	href="http://www.kegg.jp/dbget-bin/www_bget?K13560"	title="K13560 (btrK)" />
+<area shape=rect	coords=341,451,387,468	href="http://www.kegg.jp/dbget-bin/www_bget?K13559"	title="K13559 (btrJ)" />
+<area shape=rect	coords=457,451,503,468	href="http://www.kegg.jp/dbget-bin/www_bget?K13561"	title="K13561 (btrO)" />
+<area shape=rect	coords=629,470,675,487	href="http://www.kegg.jp/dbget-bin/www_bget?K13563"	title="K13563 (btrH)" />
+<area shape=rect	coords=629,531,675,548	href="http://www.kegg.jp/dbget-bin/www_bget?K13564"	title="K13564 (btrG)" />
+<area shape=rect	coords=776,470,822,487	href="http://www.kegg.jp/dbget-bin/www_bget?K13556"	title="K13556 (neoK)" />
+<area shape=rect	coords=776,531,822,548	href="http://www.kegg.jp/dbget-bin/www_bget?K17078"	title="K17078 (neoL)" />
+<area shape=rect	coords=776,655,822,672	href="http://www.kegg.jp/dbget-bin/www_bget?K13553"	title="K13553 (btrB)" />
+<area shape=rect	coords=381,170,427,187	href="http://www.kegg.jp/dbget-bin/www_bget?K13549"	title="K13549 (btrN)" />
+<area shape=rect	coords=457,418,503,435	href="http://www.kegg.jp/dbget-bin/www_bget?K13562"	title="K13562 (btrV)" />
+<area shape=rect	coords=776,591,822,608	href="http://www.kegg.jp/dbget-bin/www_bget?K13552"	title="K13552 (btrQ)" />
+<area shape=rect	coords=552,153,598,170	href="http://www.kegg.jp/dbget-bin/www_bget?K13550"	title="K13550 (btrM)" />
+<area shape=rect	coords=605,118,651,135	href="http://www.kegg.jp/dbget-bin/www_bget?K13552"	title="K13552 (btrQ)" />
+<area shape=rect	coords=717,118,763,135	href="http://www.kegg.jp/dbget-bin/www_bget?K13553"	title="K13553 (btrB)" />
+<area shape=rect	coords=40,45,365,70	href="http://www.kegg.jp/dbget-bin/www_bget?ko00524"	title="ko00524: Butirosin and neomycin biosynthesis" onmouseover="popupTimer(&quot;ko00524&quot;, &quot;ko00524: Butirosin and neomycin biosynthesis&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=rect	coords=58,235,195,260	href="http://www.kegg.jp/kegg-bin/show_pathway?ko00521"	title="ko00521: Streptomycin biosynthesis" onmouseover="popupTimer(&quot;ko00521&quot;, &quot;ko00521: Streptomycin biosynthesis&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+<area shape=rect	coords=1041,443,1189,477	href="http://www.kegg.jp/kegg-bin/show_pathway?ko00520"	title="ko00520: Amino sugar and nucleotide sugar metabolism" onmouseover="popupTimer(&quot;ko00520&quot;, &quot;ko00520: Amino sugar and nucleotide sugar metabolism&quot;, &quot;#ffffff&quot;)" onmouseout="hideMapTn()" />
+</map>
+<div id="poplay" class="poplay" />
+
+</body>
+</html>

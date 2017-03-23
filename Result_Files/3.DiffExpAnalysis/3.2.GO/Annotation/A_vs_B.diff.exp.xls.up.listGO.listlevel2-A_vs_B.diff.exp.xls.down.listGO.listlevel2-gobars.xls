@@ -1,0 +1,23 @@
+GO term	num of up protein	num of down protein
+biological regulation	1	0
+cellular component organization or biogenesis	1	0
+cellular process	74	14
+establishment of localization	7	12
+localization	7	12
+metabolic process	95	21
+regulation of biological process	1	0
+single-organism process	43	10
+cell	51	11
+cell part	51	11
+macromolecular complex	26	4
+membrane	8	11
+membrane part	5	0
+organelle	23	3
+organelle part	7	0
+extracellular region	0	1
+binding	74	14
+catalytic activity	71	17
+electron carrier activity	1	0
+receptor activity	3	11
+structural molecule activity	22	3
+transporter activity	3	0

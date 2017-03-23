@@ -1,0 +1,20 @@
+#Type	Functional_categories	COG
+INFORMATION STORAGE AND PROCESSING	[J] Translation, ribosomal structure and biogenesis 	272
+INFORMATION STORAGE AND PROCESSING	[K] Transcription 	26
+INFORMATION STORAGE AND PROCESSING	[L] Replication, recombination and repair 	6
+CELLULAR PROCESSES AND SIGNALING	[D] Cell cycle control, cell division, chromosome partitioning 	8
+CELLULAR PROCESSES AND SIGNALING	[M] Cell wall/membrane/envelope biogenesis 	25
+CELLULAR PROCESSES AND SIGNALING	[O] Posttranslational modification, protein turnover, chaperones 	47
+CELLULAR PROCESSES AND SIGNALING	[T] Signal transduction mechanisms 	7
+CELLULAR PROCESSES AND SIGNALING	[U] Intracellular trafficking, secretion, and vesicular transport 	16
+CELLULAR PROCESSES AND SIGNALING	[V] Defense mechanisms 	3
+METABOLISM	[C] Energy production and conversion 	159
+METABOLISM	[E] Amino acid transport and metabolism 	85
+METABOLISM	[F] Nucleotide transport and metabolism 	35
+METABOLISM	[G] Carbohydrate transport and metabolism 	192
+METABOLISM	[H] Coenzyme transport and metabolism 	27
+METABOLISM	[I] Lipid transport and metabolism 	41
+METABOLISM	[P] Inorganic ion transport and metabolism 	6
+METABOLISM	[Q] Secondary metabolites biosynthesis, transport and catabolism 	24
+POORLY CHARACTERIZED	[R] General function prediction only 	26
+POORLY CHARACTERIZED	[S] Function unknown 	2

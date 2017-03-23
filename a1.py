@@ -16,10 +16,13 @@ parser.add_argument("-m","--test_department_m1",dest = "M1",type = str,required=
 parser.add_argument("-f","--file",dest = "file",type = str,required = True,help = "please input file,normally 'Result_Files'")
 args = parser.parse_args()
 
-docx1 = Document(args.M1)
-docx2 = Document('/mnt/ilustre/users/jun.yan/scripts/pm_report_module/iTRAQ/%s/iTRAQ2.docx' %args.org)
-docx3 = Document('/mnt/ilustre/users/jun.yan/scripts/pm_report_module/iTRAQ/%s/iTRAQ3.docx' %args.org)
 
+###打开各个输入文档
+docx1 = Document(args.M1)
+docx2 = Document('/mnt/ilustre/users/jun.yan/scripts/pm_report_module/iTRAQ/%s/iTRAQ2-error.docx' %args.org)
+docx3 = Document('/mnt/ilustre/users/jun.yan/scripts/pm_report_module/iTRAQ/%s/iTRAQ3-error.docx' %args.org)
+
+###首页信息输入
 def _first_page(docx):
 	text1 = '\n'.join([docx1.paragraphs[i].text for i in range(len(docx1.paragraphs))])
 	name = re.findall(u'客户姓名：(.*)',text1)[0]
@@ -33,32 +36,30 @@ def _first_page(docx):
 		if u'时    间' in docx.paragraphs[i].text:
 			docx.paragraphs[i].runs[1].text = doctime
 
-def __get_project_info()
-	project_info = []
-	for i in range(len(docx1.tables[0].rows)):
-		for j in range(len(docx1.tables[0].rows[i].cells)):
-			project_info.append(docx1.tables[0].rows[i].cells[j].text)
+###项目信息收集，基本是第一个表格
+project_info = []
+for i in range(len(docx1.tables[0].rows)):
+	for j in range(len(docx1.tables[0].rows[i].cells)):
+		project_info.append(docx1.tables[0].rows[i].cells[j].text)
+		
+project_info = '\t'.join(project_info)
+project_name = re.findall(u'项目名称\t项目名称\t项目名称\t项目名称\t(.*?)\t',project_info)[0]
+contract_no = re.findall(u'合同编号\t合同编号\t合同编号\t合同编号\t(.*?)\t',project_info)[0]
+apecies_information = re.findall(u'物种信息\t(.*?)\t',project_info)[0]
+exp_purpose = re.findall(u'实验目的\t(.*?)\t',project_info)[0]
+client_name = re.findall(u'单位名称\t(.*?)\t',project_info)[0]
+client_address = re.findall(u'单位地址\t(.*?)\t',project_info)[0]
+tutor_info =  re.findall(u'实验室导师\t(.*?)\t电话\t(.*?)\t实验室导师\t(.*?)\t邮箱\t(.*?)\t',project_info)[0]
+contactor_info = re.findall(u'项目联系人\t(.*?)\t电话\t(.*?)\t项目联系人\t(.*?)\t邮箱\t(.*?)\t',project_info)[0]
+seller_info =re.findall(u'销售员\t(.*?)\t电话\t(.*?)\t销售员\t(.*?)\t邮箱\t(.*?)\t',project_info)[0]
+supporter = re.findall(u'技术支持\t(.*?)\t电话\t(.*?)\t技术支持\t(.*?)\t邮箱\t(.*)',project_info)[0]
 
-	project_info = '\t'.join(project_info)
-	project_name = re.findall(u'项目名称\t项目名称\t项目名称\t项目名称\t(.*?)\t',project_info)[0]
-	contract_no = re.findall(u'合同编号\t合同编号\t合同编号\t合同编号\t(.*?)\t',project_info)[0]
-	apecies_information = re.findall(u'物种信息\t(.*?)\t',project_info)[0]
-	exp_purpose = re.findall(u'实验目的\t(.*?)\t',project_info)[0]
-	client_name = re.findall(u'单位名称\t(.*?)\t',project_info)[0]
-	client_address = re.findall(u'单位地址\t(.*?)\t',project_info)[0]
-	tutor_info =  re.findall(u'实验室导师\t(.*?)\t电话\t(.*?)\t实验室导师\t(.*?)\t邮箱\t(.*?)\t',project_info)[0]
-	contactor_info = re.findall(u'项目联系人\t(.*?)\t电话\t(.*?)\t项目联系人\t(.*?)\t邮箱\t(.*?)\t',project_info)[0]
-	seller_info =re.findall(u'销售员\t(.*?)\t电话\t(.*?)\t销售员\t(.*?)\t邮箱\t(.*?)\t',project_info)[0]
-	supporter = re.findall(u'技术支持\t(.*?)\t电话\t(.*?)\t技术支持\t(.*?)\t邮箱\t(.*)',project_info)[0]
-
-def _project_info(docx):	
-	__get_project_info()
+###项目信息等级，好像只能一个一个得写入了
+def _project_info(docx):
 	for i in range(len(docx.tables)):
 		if u'项目名称' in docx.tables[i].rows[0].cells[0].text:
 			font_size = docx.tables[i].rows[0].cells[0].paragraphs[0].runs[0].font.size
-			print font_size
 			font_name = docx.tables[i].rows[0].cells[0].paragraphs[0].runs[0].font.name
-			print font_name
 			for j in range(len(docx.tables[i].rows)):
 				if u'项目名称' in docx.tables[i].rows[j].cells[0].text:
 					run = docx.tables[i].rows[j+1].cells[0].paragraphs[0].runs[0]
@@ -146,29 +147,32 @@ def _project_info(docx):
 						run_email.text = supporter[3]
 						run_email.font.size = font_size
 						run_email.font.name = font_name
-				
+
+###对表格进行写入:__MJ_table执行思路是判断第一行的第一列和第二列的信息来判断表格属于谁
 def __MJ_table(i,docx,header1,header2,file,judgment1,judgment2,table_format): 
 	file = commands.getoutput('''ls %s |head -1 ''' %file)
-	if u'%s' %header1 in docx.tables[i].rows[0].cells[0].text and u'%s' %header2 in docx.tables[i].rows[0].cells[1].text:
-		with open(file,'r') as table:
-			mark = 1
-			for line in table.readlines():
-				if mark<3:
-					items = line.strip().split('\t')
-					count = re.subn(r'%s' %judgment1,r'%s' %judgment1,line)[1]
-					if 0<count and count<judgment2:  
-						for j in range(len(docx.tables[i].rows[mark].cells)):
-							docx.tables[i].rows[mark].cells[j].paragraphs[0].add_run()
-							run=docx.tables[i].rows[mark].cells[j].paragraphs[0].runs[1]
-							print items[j]
-							run.text=items[j]
-							run.font.size = docx.tables[i].rows[mark].cells[j].paragraphs[0].runs[0].font.size
-							run.font.name = docx.tables[i].rows[mark].cells[j].paragraphs[0].runs[0].font.name
-							docx.tables[i].rows[mark].cells[j].paragraphs[0].runs[0].clear()
-							docx.tables[i].rows[mark].cells[j].paragraphs[0].paragraph_format.alignment=table_format
-						mark += 1
+	try:
+		if u'%s' %header1 in docx.tables[i].rows[0].cells[0].text and u'%s' %header2 in docx.tables[i].rows[0].cells[1].text:
+			with open(file,'r') as table:
+				mark = 1
+				for line in table.readlines():
+					if mark<3:
+						items = line.strip().split('\t')
+						count = re.subn(r'%s' %judgment1,r'%s' %judgment1,line)[1]
+						if 0<count and count<judgment2:  
+							for j in range(len(docx.tables[i].rows[mark].cells)):
+								docx.tables[i].rows[mark].cells[j].paragraphs[0].add_run()
+								run=docx.tables[i].rows[mark].cells[j].paragraphs[0].runs[1]
+								run.text=items[j]
+								run.font.size = docx.tables[i].rows[mark].cells[j].paragraphs[0].runs[0].font.size
+								run.font.name = docx.tables[i].rows[mark].cells[j].paragraphs[0].runs[0].font.name
+								docx.tables[i].rows[mark].cells[j].paragraphs[0].runs[0].clear()
+								docx.tables[i].rows[mark].cells[j].paragraphs[0].paragraph_format.alignment=table_format
+							mark += 1
+	except:
+		pass
 
-def _MJ3_tables(docx):
+def _MJ_tables(docx):
 	for i in range(len(docx.tables)):
 		table_format = docx.tables[i].rows[0].cells[0].paragraphs[0].paragraph_format.alignment
 		#4.1.1
@@ -185,16 +189,16 @@ def _MJ3_tables(docx):
 		__MJ_table(i,docx,u'蛋白名称',u'KO编号','%s/2.Annotation/2.2.KEGG/pathways/kegg_table.xls'%(args.file),r'ko',5,table_format)
 		#4.1.3-----COG
 		##COG.list
-		__MJ_table(i,docx,u'蛋白Accession号',u'对应的COG号','%s/2.Annotation/2.3.COG/COG.list'%(args.file),r'COG:',5,table_format)
+		__MJ_table(i,docx,u'蛋白Accession号',u'对应的COG号','%s/2.Annotation/2.3.COG/COG.list'%(args.file),r'COG',5,table_format)
 		##COG.annot.xls
-		__MJ_table(i,docx,u'蛋白名称',u'COG编号','%s/2.Annotation/2.3.COG/COG.annot.xls'%(args.file),r'COG:',10,table_format)
+		__MJ_table(i,docx,u'蛋白名称',u'COG编号','%s/2.Annotation/2.3.COG/COG.annot.xls'%(args.file),r'\[',10,table_format)
 		##COG.class.catalog.xls
 		__MJ_table(i,docx,u'COG 4种类型',u'COG功能分类，共25','%s/2.Annotation/2.3.COG/COG.class.catalog.xls'%(args.file),r'\[',10,table_format)
 		#4.1.3-----KOG
 		##KOG.list
-		__MJ_table(i,docx,u'蛋白Accession号',u'对应的KOG号','%s/2.Annotation/2.3.KOG/KOG.list'%(args.file),r'KOG:',5,table_format)
+		__MJ_table(i,docx,u'蛋白Accession号',u'对应的KOG号','%s/2.Annotation/2.3.KOG/KOG.list'%(args.file),r'KOG',5,table_format)
 		##COG.annot.xls
-		__MJ_table(i,docx,u'蛋白名称',u'KOG编号','%s/2.Annotation/2.3.KOG/KOG.annot.xls'%(args.file),r'KOG:',10,table_format)
+		__MJ_table(i,docx,u'蛋白名称',u'KOG编号','%s/2.Annotation/2.3.KOG/KOG.annot.xls'%(args.file),r'\[',10,table_format)
 		##COG.class.catalog.xls
 		__MJ_table(i,docx,u'KOG 4种类型',u'KOG功能分类，共25','%s/2.Annotation/2.3.KOG/KOG.class.catalog.xls'%(args.file),r'\[',10,table_format)
 		#4.2.1
@@ -208,42 +212,57 @@ def _MJ3_tables(docx):
 		__MJ_table(i,docx,u'KEGG pathway名称',u'数据库','%s/3.DiffExpAnalysis/3.3.KEGG/Enrichment/*.pathway.xls'%(args.file),r'ko',5,table_format)
 		#4.2.5
 		##*_vs_*.network.xls
-		__MJ_table(i,docx,u'*_vs_*.network.xls：两组样本之间差异蛋白的蛋白互作关系表格','%s/3.DiffExpAnalysis/3.5.Network/*interraction.xls'%(args.file),r'\.',5,table_format)
+		__MJ_table(i,docx,r'node1',r'node2','%s/3.DiffExpAnalysis/3.5.Network/*interraction.xls' %(args.file),r'\.',5,table_format)
 		##*_vs_*.annotation.xls
-		__MJ_table(i,docx,u'KEGG pathway名称',u'数据库','%s/3.DiffExpAnalysis/3.5.Network/*annotation.xls'%(args.file),r'\.',5,table_format)
+		__MJ_table(i,docx,u'蛋白名',u'蛋白uniprot登录号','%s/3.DiffExpAnalysis/3.5.Network/*annotation.xls'%(args.file),r'\.',5,table_format)
+		
 
-docx3 = Document('/mnt/ilustre/users/jun.yan/scripts/pm_report_module/iTRAQ/prok/iTRAQ3-error.docx')
+###对图片进行替换，由图片上一句话来进行判断图片的归属信息
 def __MJ_jpg(i,docx,mark,file):
 	try:
 		file = commands.getoutput('''ls %s |head -1 ''' %file)
-		if u'%s' %mark in docx.paragraphs[i].text:	
-			if 'pdf' in file:
-				file_pdf = file
-				file_jpg = 'tmp/%s.jpg' %(file.split('/')[-1])
+		if u'%s' %mark in docx.paragraphs[i].text:
+			file_pdf = file
+			file_jpg = 'tmp/%s.jpg' %(file.split('/')[-1])
+			if 'pdf' in file:				
 				os.system('''convert -density 300  %s %s >/dev/null 2>&1''' %(file_pdf,file_jpg))
-				file_jpg = commands.getoutput('''ls %s |head -1 ''' %(file_jpg.split('-')[0]))
 			else:
-				file_pdf = file_jpg = file
+				file_jpg = file_pdf
 			if u'level2.go.txt.pdf：GO二级分类统计条形图' in mark:
-				os.system('''convert %s -crop 3600x2400+0+300  %s ''' %(file_jpg,file_jpg))
+				os.system('''convert %s -crop 3600x2400+0+200  %s ''' %(file_jpg,file_jpg))
 			elif u'level234.pdf：GO二级、三级、四级分类统计九饼图' in mark:
 				os.system('''convert %s -crop 6000x3200+0+800 %s''' %(file_jpg,file_jpg))
 			elif u'kegg_classification.pdf：对蛋白做KO注释后，可根据它们参与的KEGG代谢通路进行分类' in mark:
-				os.system('''convert %s -crop 2550x2300+0+500 %s''' %(file_jpg,file_jpg))
+				os.system('''convert %s -crop 2550x2300+0+600 %s''' %(file_jpg,file_jpg))
+			elif u'Heatmap_trendlines_for_' in mark:
+				file_jpg='tmp/Heatmap_trendlines_for_10_subclusters.pdf-0.jpg'
 			docx.paragraphs[i+1].add_run()
 			docx.paragraphs[i+1].runs[1].style.style_id = docx.paragraphs[i+1].runs[0].style.style_id
-			if u'差异蛋白表达模式聚类图' in mark:
-				docx.paragraphs[i+1].runs[1].add_picture(file_jpg,height = 9000000)
+			if u'差异蛋白模块（clusters）表达趋势折线图' in mark:
+				docx.paragraphs[i+1].runs[1].add_picture(file_jpg,height = 8000000)
 			else:	
 				docx.paragraphs[i+1].runs[1].add_picture(file_jpg,width = 6000000)
-			docx.paragraphs[i+1].runs[0].clear()	
+			docx.paragraphs[i+1].runs[0].clear()
 	except:
 		pass
-
-def _MJ3_jpgs(docx):
+		
+def _MJ_jpgs(docx):
 	if not os.path.isdir('tmp'):
 		os.mkdir('tmp')
 	for i in range(len(docx.paragraphs)):
+		#print docx.paragraphs[i].text
+		##肽段匹配误差分布图
+		__MJ_jpg(i,docx,u'dMass.pdf：肽段匹配误差分布图','%s/1.QualityControl/dMass.pdf' %(args.file))
+		##肽段数量分布柱状图
+		__MJ_jpg(i,docx,u'Peptide_number_distribution.pdf：肽段数量分布柱状图','%s/1.QualityControl/Peptide_number_distribution.pdf' %(args.file))
+		##肽段长度分布柱状图
+		__MJ_jpg(i,docx,u'Peptide_length_distribution.pdf：肽段长度分布柱状图','%s/1.QualityControl/Peptide_length_distribution.pdf' %(args.file))
+		##蛋白分子量分布柱状图
+		__MJ_jpg(i,docx,u'Protein_molecular_weight_distribution.pdf：蛋白分子量分布柱状图','%s/1.QualityControl/Protein_molecular_weight_distribution.pdf' %(args.file))
+		##蛋白覆盖度分布饼图
+		__MJ_jpg(i,docx,u'Protein_coverage_distribution.pdf：蛋白覆盖度分布饼图','%s/1.QualityControl/Protein_coverage_distribution.pdf' %(args.file))
+		##鉴定蛋白质信息统计柱状图
+		__MJ_jpg(i,docx,u'Protein_information.pdf：鉴定蛋白质信息统计柱状图','%s/1.QualityControl/Protein_information.pdf' %(args.file))
 		#4.1.1
 		##GO二级分类统计条形图
 		__MJ_jpg(i,docx,u'level2.go.txt.pdf：GO二级分类统计条形图','%s/2.Annotation/2.1.GO/level2.go.txt.pdf' %(args.file))
@@ -266,9 +285,9 @@ def _MJ3_jpgs(docx):
 		__MJ_jpg(i,docx,u'*_vs_*.volcano.pdf：各分组样本差异蛋白可视化火山图','%s/3.DiffExpAnalysis/3.1.Statistics/Volcano/*_vs_*.volcano.pdf'%(args.file))
 		##差异蛋白Venn图
 		__MJ_jpg(i,docx,u'*.Venn.pdf：差异蛋白Venn图','%s/3.DiffExpAnalysis/3.1.Statistics/Venn/*Venn.pdf'%(args.file))
-		##上下调蛋白GO注释柱形图		
-		__MJ_jpg(i,docx,u'*gobars.pdf：上下调蛋白GO注释柱形图','%s/3.DiffExpAnalysis/3.2.GO/Annotation/*.listlevel2-gobars.pdf'%(args.file))
 		#4.2.2
+		##上下调蛋白GO注释柱形图
+		__MJ_jpg(i,docx,u'*gobars.pdf：上下调蛋白GO注释柱形图','%s/3.DiffExpAnalysis/3.2.GO/Annotation/*gobars.pdf'%(args.file))
 		##GO功能富集分析柱状图
 		__MJ_jpg(i,docx,u'*.enrichment.detail.xls.go.pdf：各分组差异蛋白GO功能富集分析柱状图','%s/3.DiffExpAnalysis/3.2.GO/Enrichment/*.go.pdf'%(args.file))
 		#4.2.3
@@ -286,16 +305,45 @@ def _MJ3_jpgs(docx):
 		__MJ_jpg(i,docx,u'*_vs_*.network.png：两组样本之间差异蛋白的蛋白互作图（png格式）','%s/3.DiffExpAnalysis/3.5.Network/*confidence.png'%(args.file))
 		#4.2.6
 		##Ipath整合通路图
-		__MJ_jpg(i,docx,u'*_vs_*.Ipath.png：Ipath整合通路图（png格式）','Result_Files/3.DiffExpAnalysis/3.6.Ipath/*ipath.png'%(args.file))
-		
+		__MJ_jpg(i,docx,u'*_vs_*.Ipath.png：Ipath整合通路图（png格式）','%s/3.DiffExpAnalysis/3.6.Ipath/*ipath.png'%(args.file))		
 	#os.system('rm -rf tmp')
 
-if __name__=='__main':
-	_first_page(docx2)
-	_first_page(docx3)
-	_project_info(docx2)
-	_project_info(docx3)
-	_MJ3_tables(docx3)
-	_MJ3_jpgs(docx3)
+if __name__=='__main__':
+	try:
+		_first_page(docx2)
+		print '\ndocx2`s first page is done!'
+	except:
+		print '\ndocx2`s first page is not done!'
+	try:
+		_first_page(docx3)
+		print 'docx3`s first page is done!'
+	except:
+		print 'docx3`s first page is not done!'
+	try:	
+		_project_info(docx2)
+		print 'docx2`s project_info is done!'
+	except:
+		print 'docx2`s project_info is not done!'	
+	try:	
+		_project_info(docx3)
+		print 'docx3`s project_info is done!'
+	except:
+		print 'docx3`s project_info is not done!'	
+	try:	
+		_MJ_tables(docx3)
+		print 'docx3`s tables is done!'
+	except:
+		print 'docx3`s tables is not done!'	
+	try:	
+		_MJ_jpgs(docx2)
+		print 'docx2`s jpgs is done!'	
+	except:
+		print 'docx3`s jpgs is not done!'		
+	try:	
+		_MJ_jpgs(docx3)
+		print 'docx3`s jpgs is done!'	
+	except:
+		print 'docx3`s jpgs is not done!'		
 	docx2.save('M2.docx')
 	docx3.save('M3.docx')
+	print 'done!'
